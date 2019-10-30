@@ -205,10 +205,12 @@ void showName(TestObj obj) {
 }
 
 void main() {
-   	showName('AAA');  // 매개변수 AAA를 넣어주면 알아서 생성자 TestObj(string name)을 찾아서 넣는 암시적 변환이 일어난다.
+    showName('AAA'); 
+    // 매개변수 AAA를 넣어주면 알아서 생성자 TestObj(string name)을 찾아서 넣는 암시적 변환이 일어난다.
 
-	showName(30);     // showName()이라는 함수가 이름을 출력하는 함수인데, 숫자를 매개변수로 던지는 경우 TestObj(int age)를 찾아서 넣기 때문에 시스템 오류를 만들수 있다.
-	                  // 이러한 경우에 explicit이라는 키워드를 선언하여 암시적 형변환이 일어나지 않도록한다.
+    showName(30);   
+    // showName()이라는 함수가 이름을 출력하는 함수인데, 숫자를 매개변수로 던지는 경우 TestObj(int age)를 찾아서 넣기 때문에 시스템 오류를 만들수 있다.
+	// 이러한 경우에 explicit이라는 키워드를 선언하여 암시적 형변환이 일어나지 않도록한다.
 }
   ```
 
