@@ -214,4 +214,126 @@ void main() {
 }
   ```
 
+## 오버라이딩(overriding)
+
+  - 부모 객체로 붙어 받은 함수를 재정의 하는 것을 말한다. 
+  - Human.h
+
+  ```
+  #include <iostream>
+#include <string.h>
+
+#ifndef  HUMAN_H
+#define HUMAN_H
+
+using namespace std;
+
+class Human
+{
+	string name;
+	int age;
+public:
+	Human();
+	Human(string name, int age);
+	void setInfo(string name, int age);
+	void setName(string name);
+	void setAge(int age);
+	string getName();
+	int getAge();
+	virtual void showPrint();
+};
+#endif // ! HUMAN_H
+  ```
+
+- Human.cpp
+ ```
+#include "Human.h"
+
+Human::Human(string name, int age) {
+	this->name = name;
+	this->age = age;
+}
+void Human::setInfo(string name, int age) {
+	this->name = name;
+	this->age = age;
+}
+void Human::setName(string name) {
+	this->name = name;
+
+}
+
+void Human::setAge(int age) {
+	this->age = age;
+}
+
+string Human::getName() {
+	return this->name;
+};
+int Human::getAge() {
+	return this->age;
+};
+
+void Human::showPrint() {
+	cout << this->name << ", " << this->age << endl;
+}
+```
+  
+- Student.h
+```
+#include "Human.h"
+
+#ifndef  STUDENT_H
+#define STUDENT_H
+
+class Student : public Human
+{
+	char grade;
+	string schoolAddr;
+public:
+	Student();
+	Student(string name, int age, char grade, string schoolAddr);
+	void setGrade(char grade);
+	char getGrade();
+	void setSchoolAddr(string schooladdr);
+	string getSchoolAddr();
+	void showPrint();
+	
+
+};
+
+#endif // ! STUDENT_H
+```
+- Student.cpp
+```
+#include "Student.h"
+
+Student::Student(string name, int age, char grade, string schoolAddr) :Human(name, age) {
+	this->grade = grade;
+	this->schoolAddr = schoolAddr;
+};
+
+void Student::setGrade(char grade) {
+
+};
+char Student::getGrade() {
+	return this->grade;
+};
+void Student::setSchoolAddr(string schooladdr) {
+	this->schoolAddr = schoolAddr;
+};
+
+string Student::getSchoolAddr() {
+	return this->schoolAddr;
+};
+
+void Student::showPrint() {
+	cout << "이름 : " << getName() << endl;
+	cout << "나이 : " << getAge() << endl;
+	cout << "학점 : " << this->grade << endl;
+	cout << "학교주소 : " << this->schoolAddr << endl;
+}
+
+```
+
+
 
